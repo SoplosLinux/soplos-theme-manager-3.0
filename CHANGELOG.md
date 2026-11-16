@@ -15,7 +15,7 @@ First stable release of the 3.0 rewrite: the program is no longer in beta.
 
 - GTK Themes, Icons and Cursors pages: the list is a grid of cards, as in Look Manager. A GTK theme is drawn with its own colors (or with the picture it brings, when its colors cannot be read), an icon theme with six of its icons and a cursor theme with four of its cursors. A click on a card applies the theme at once: there is no Activate button, and a trash button on each card deletes it. The pictures of icon and cursor themes are asked for one theme at a time, so the cards show at once.
 - Applying a saved theme sets the look (GTK theme, icons, cursor and font) first and restarts the panel after it, so the panel starts once, with the final themes.
-- The six base themes that come with the program are new: they use the Tela Soplos icon themes (`tela-soplos-dark` and `tela-soplos-light`) and carry the Status Tray in the panel. `Soplos-2.0` is now `soplos-2.0`.
+- The six base themes that come with the program are new: they use the Tela Soplos icon themes (`tela-soplos-dark` and `tela-soplos-light`) and carry the Status Tray in the panel. They no longer carry the Breeze icon themes inside them, so the six files take 68 MB instead of 127 MB, and the package is about half the size. `Soplos-2.0` is now `soplos-2.0`.
 - The text of the interface cannot be selected or copied, in the same way as the context menu is off. Only the fields where text is typed keep the selection.
 
 ### Fixed

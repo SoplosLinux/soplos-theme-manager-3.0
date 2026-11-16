@@ -199,7 +199,7 @@
   <releases>
     <release version="3.0.0" date="2026-11-16">
       <description>
-        <p>First stable release of the 3.0 rewrite. The GTK Themes, Icons and Cursors pages are grids of cards, as in Look Manager, and a click applies the theme. The six base themes are new, with the Tela Soplos icons and the Status Tray in the panel. The wallpaper cards are drawn as soon as each small copy is ready, the copies of pictures with transparency keep their colors, the Panel page applies the changes of every panel at once, and the text of the interface cannot be selected.</p>
+        <p>First stable release of the 3.0 rewrite. The GTK Themes, Icons and Cursors pages are grids of cards, as in Look Manager, and a click applies the theme. The six base themes are new, with the Tela Soplos icons and the Status Tray in the panel, and they no longer carry the Breeze icons, so the package is about half the size. The wallpaper cards are drawn as soon as each small copy is ready, the copies of pictures with transparency keep their colors, the Panel page applies the changes of every panel at once, and the text of the interface cannot be selected.</p>
       </description>
     </release>
     <release version="3.0.0-4-beta" date="2026-11-12">
