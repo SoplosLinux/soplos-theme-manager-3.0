@@ -1,0 +1,73 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "soplos-theme-manager",
+  "version": "3.0.0",
+  "identifier": "org.soplos.thememanager",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build",
+    "devUrl": "http://localhost:1420",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Soplos Theme Manager",
+        "width": 1000,
+        "height": 700,
+        "minWidth": 860,
+        "minHeight": 560,
+        "resizable": true,
+        "decorations": false,
+        "transparent": true
+      }
+    ],
+    "security": {
+      "csp": null,
+      "assetProtocol": {
+        "enable": true,
+        "scope": []
+      }
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["deb"],
+    "publisher": "Sergi Perich",
+    "homepage": "https://soplos.org",
+    "copyright": "Copyright © 2026 Sergi Perich",
+    "license": "GPL-3.0-or-later",
+    "licenseFile": "../LICENSE",
+    "category": "Utility",
+    "shortDescription": "Theme manager for Soplos Linux Tyron",
+    "longDescription": "Manage the themes, wallpapers, GTK themes, icons and cursors, panel, dock and login screen of Soplos Linux Tyron (Xfce).",
+    "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.png"],
+    "linux": {
+      "deb": {
+        "section": "x11",
+        "priority": "optional",
+        "depends": ["xfconf", "pkexec"],
+        "recommends": ["scrot", "imagemagick", "wmctrl", "libnotify-bin"],
+        "changelog": "../CHANGELOG.md",
+        "desktopTemplate": "resources/debian/soplos-theme-manager.desktop.hbs",
+        "files": {
+          "/usr/share/doc/soplos-theme-manager/copyright": "resources/debian/copyright",
+          "/usr/share/polkit-1/actions/org.soplos.thememanager.policy": "resources/polkit/org.soplos.thememanager.policy",
+          "/usr/share/mime/packages/org.soplos.thememanager.xml": "resources/mime/org.soplos.thememanager.xml",
+          "/usr/share/icons/hicolor/scalable/mimetypes/application-x-soplos-theme.svg": "resources/mime/application-x-soplos-theme.svg",
+          "/usr/share/metainfo/org.soplos.thememanager.metainfo.xml": "resources/appstream/org.soplos.thememanager.metainfo.xml",
+          "/usr/share/doc/soplos-theme-manager/screenshots/screenshot01.png": "resources/screenshots/screenshot01.png",
+          "/usr/share/doc/soplos-theme-manager/screenshots/screenshot02.png": "resources/screenshots/screenshot02.png",
+          "/usr/share/doc/soplos-theme-manager/screenshots/screenshot03.png": "resources/screenshots/screenshot03.png",
+          "/usr/share/doc/soplos-theme-manager/screenshots/screenshot04.png": "resources/screenshots/screenshot04.png",
+          "/usr/share/doc/soplos-theme-manager/screenshots/screenshot05.png": "resources/screenshots/screenshot05.png",
+          "/usr/share/doc/soplos-theme-manager/screenshots/screenshot06.png": "resources/screenshots/screenshot06.png",
+          "/usr/share/doc/soplos-theme-manager/screenshots/screenshot07.png": "resources/screenshots/screenshot07.png",
+          "/usr/share/doc/soplos-theme-manager/screenshots/screenshot08.png": "resources/screenshots/screenshot08.png",
+          "/usr/share/man/man1/soplos-theme-manager.1.gz": "resources/docs/soplos-theme-manager.1.gz",
+          "/usr/share/soplos-theme-manager/base-themes": "resources/base-themes"
+        }
+      }
+    }
+  }
+}

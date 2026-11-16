@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Light and dark theme of the program. Each Tailwind color reads its RGB
+ * channels from these variables, so opacity modifiers (bg-primary/15) keep
+ * working. The defaults are the dark theme; :root.light overrides them.
+ * lib/theme.ts switches the class.
+ */
+:root {
+  /* Lets the controls that the toolkit draws (lists that open, scroll bars,
+     number arrows) use the colors of the theme in use. */
+  color-scheme: dark;
+  --color-dark: 37 37 39;
+  --color-panel: 30 30 32;
+  --color-surface: 44 44 46;
+  --color-surface-2: 53 53 56;
+  --color-border: 61 61 64;
+  --color-text: 192 192 192;
+  --color-text-bright: 255 255 255;
+  --color-text-muted: 136 136 136;
+}
+
+:root.light {
+  color-scheme: light;
+  --color-dark: 245 245 245;
+  --color-panel: 255 255 255;
+  --color-surface: 255 255 255;
+  --color-surface-2: 232 232 232;
+  --color-border: 208 208 208;
+  --color-text: 71 85 105;
+  --color-text-bright: 44 62 80;
+  --color-text-muted: 107 114 128;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  /* The interface is not a document: its text cannot be selected or copied, in
+     the same way as the context menu is off. Only the fields where the user
+     types keep the selection. */
+  body {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  input,
+  textarea,
+  select,
+  [contenteditable="true"] {
+    -webkit-user-select: text;
+    user-select: text;
+  }
+
+  /* The lines of the lists that open from a select. */
+  option {
+    background-color: rgb(var(--color-surface));
+    color: rgb(var(--color-text-bright));
+  }
+
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    /* The window card (App.svelte) paints the background; the body stays
+       transparent so the corners of a window without frame can be round. */
+    background: transparent;
+    color: theme("colors.text.DEFAULT");
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+  }
+}
+
+/* The window when the system draws no frame: one card with rounded corners.
+   clip-path also cuts the dialogs (position: fixed), which overflow does not. */
+.window-card {
+  border-radius: 12px;
+  border: 1px solid rgb(var(--color-border));
+  clip-path: inset(0 round 12px);
+}
+
+/* The sliding bar of progress, for work that has no end that can be measured. */
+@keyframes progress-slide {
+  0% {
+    margin-left: -35%;
+  }
+  100% {
+    margin-left: 100%;
+  }
+}
+
+.progress-slide {
+  animation: progress-slide 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.content-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: theme("colors.primary.DEFAULT") transparent;
+}
+
+.content-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.content-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.content-scroll::-webkit-scrollbar-thumb {
+  background: theme("colors.primary.DEFAULT");
+  border-radius: 8px;
+}
+
+.content-scroll::-webkit-scrollbar-thumb:hover {
+  background: theme("colors.primary.hover");
+}

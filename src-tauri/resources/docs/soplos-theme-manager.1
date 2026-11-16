@@ -1,0 +1,130 @@
+.TH "SOPLOS-THEME-MANAGER" "1" "2026-11-16" "Soplos Linux" "User Commands"
+.SH NAME
+soplos-theme-manager \- theme manager for Soplos Linux Tyron (Xfce)
+.SH SYNOPSIS
+.B soplos-theme-manager
+[\fIOPTIONS\fR] [\fIFILE.sth\fR]
+.SH DESCRIPTION
+.B soplos-theme-manager
+manages the look of Soplos Linux Tyron from a graphical interface. Built with
+Tauri 2, Rust, and Svelte, it has eight pages:
+.IP \[bu] 2
+.B Themes:
+the complete desktop themes (GTK theme, icons, cursor, fonts, window borders,
+wallpaper and panel) that were saved. A theme can be applied, deleted, exported
+to a
+.B .sth
+file and imported from one. Six themes come with the program and are added the
+first time it runs.
+.IP \[bu]
+.B Wallpapers:
+the pictures of a folder and of the folders inside it. A picture is set as the
+wallpaper of every screen and workspace, and new pictures can be installed for
+one user or for every user.
+.IP \[bu]
+.B GTK Themes, Icons
+and
+.B Cursors:
+the installed themes of each kind, as cards. A GTK theme is drawn with its own
+colors, an icon theme with some of its icons and a cursor theme with some of its
+cursors. A click on a card applies the theme. Themes are installed from a package
+(.tar.gz, .tar.xz, .tar.bz2, .tar or .zip) and deleted after a confirmation; the
+active theme is never deleted.
+.IP \[bu]
+.B Panel:
+the panels of Xfce, with their position, appearance, behavior and plugins.
+The changes of every panel are applied together, and the panel is restarted once.
+.IP \[bu]
+.B Dock:
+the applications pinned to the Docklike Taskbar, edited by dragging them on the
+preview of the dock.
+.IP \[bu]
+.B Login Screen:
+the settings of the LightDM GTK greeter: the background, the user picture, the
+GTK, icon and cursor themes, the font and the position of the login box.
+.P
+The window never runs as root. The changes that need the administrator (the login
+screen, and the themes and wallpapers installed for every user) go through a
+single Polkit-gated helper, authenticated with
+.BR pkexec (1),
+which accepts only a closed list of operations and checks every value before it
+writes.
+.P
+The settings of Xfce are read and written through
+.BR xfconf-query (1).
+A theme that carries a panel restarts the panel with
+.BR xfce4-panel (1).
+.P
+The interface is available in English, Spanish, German, French, Italian,
+Portuguese, Romanian and Russian. It starts in the system language and falls
+back to English. The light or dark theme of the window follows the one of Xfce.
+.SH OPTIONS
+.TP
+.B \-h, \-\-help
+Show summary of options.
+.TP
+.I FILE.sth
+Open the theme in
+.I FILE
+and offer to install it. A double click on a
+.B .sth
+file in the file manager does the same.
+.TP
+.B \-\-run-ops \fIFILE\fR
+Internal Polkit-authenticated task: validate and run the operations stored in
+.IR FILE .
+Used by the application itself through
+.BR pkexec (1)
+and not meant to be called by hand.
+.SH KEYBOARD SHORTCUTS
+.TP
+.B F1
+About dialog.
+.TP
+.B Ctrl+Q
+Quit the application.
+.TP
+.B Ctrl+Tab
+Next page.
+.TP
+.B Ctrl+Shift+Tab
+Previous page.
+.SH FILES
+.TP
+.I ~/.config/soplos-theme-manager/themes/
+The saved themes.
+.TP
+.I ~/.cache/soplos-theme-manager/thumbs/
+Small copies of the wallpapers, made once so the pages show quickly.
+.TP
+.I /usr/share/soplos-theme-manager/base-themes/
+The themes that come with the program.
+.TP
+.I /usr/share/themes/, ~/.themes/
+Installed GTK themes.
+.TP
+.I /usr/share/icons/, ~/.icons/
+Installed icon and cursor themes.
+.TP
+.I /usr/share/backgrounds/, ~/.local/share/backgrounds/
+Wallpapers.
+.TP
+.I /etc/lightdm/lightdm-gtk-greeter.conf
+The settings of the login screen.
+.TP
+.I /usr/share/polkit-1/actions/org.soplos.thememanager.policy
+Polkit policy defining the administrator privileges for the installation for every user and for the login screen.
+.SH AUTHOR
+Written by Sergi Perich <info@soploslinux.com> for the Soplos Linux project.
+.SH COPYRIGHT
+Copyright \(co 2026 Sergi Perich <info@soploslinux.com>.
+.br
+License: GPL-3.0-or-later <https://www.gnu.org/licenses/gpl-3.0.html>.
+.br
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+.SH SEE ALSO
+.BR xfconf-query (1),
+.BR xfce4-panel (1),
+.BR pkexec (1),
+.BR soplos-welcome (1)

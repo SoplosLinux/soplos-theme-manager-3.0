@@ -1,0 +1,15 @@
+pub mod avatar;
+pub mod bundle_io;
+pub mod bundles;
+pub mod dock;
+pub mod gtk_colors;
+pub mod icons;
+pub mod lightdm;
+pub mod packages;
+pub mod panel;
+pub mod previews;
+pub mod privileged;
+pub mod themes;
+pub mod wallpapers;
+pub mod xfconf;
+pub mod xfconf_xml;

@@ -1,0 +1,42 @@
+[package]
+name = "soplos-theme-manager"
+version = "3.0.0"
+description = "Soplos Theme Manager"
+authors = ["Sergi Perich <info@soploslinux.com>"]
+license = "GPL-3.0-or-later"
+edition = "2021"
+
+[lib]
+name = "soplos_theme_manager_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+# No "devtools" feature here: Tauri already enables the inspector on debug
+# builds; declaring the feature would force it on in release builds too.
+tauri = { version = "2", features = ["protocol-asset"] }
+tauri-plugin-shell = "2"
+tauri-plugin-single-instance = "2"
+tauri-plugin-dialog = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+# Reading the packages of themes (.tar.gz, .tar.xz, .tar.bz2, .tar, .zip).
+tar = "0.4"
+flate2 = "1"
+xz2 = "0.1"
+bzip2 = "0.4"
+zip = { version = "2", default-features = false, features = ["deflate", "bzip2"] }
+# The small pictures of the themes.
+png = "0.17"
+base64 = "0.22"
+# The small copies of the wallpapers (WebKitGTK already needs it).
+gdk-pixbuf = "0.18"
+
+[profile.release]
+panic = "abort"
+codegen-units = 1
+lto = true
+opt-level = "s"
+strip = true
